@@ -1,11 +1,11 @@
 'use client';
 
-import { Download } from 'lucide-react';
+import { Download as DownloadIcon } from 'lucide-react';
 
 interface DownloadProps {
   className?: string;
 }
 
 export function Download({ className }: DownloadProps) {
-  return <Download className={className} />;
+  return <DownloadIcon className={className} />;
 }

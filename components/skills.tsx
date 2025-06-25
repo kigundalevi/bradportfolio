@@ -108,7 +108,10 @@ export function Skills() {
                               <span>Proficiency</span>
                               <span>{skill.level}%</span>
                             </div>
-                            <Progress value={skill.level} className="h-2" />
+                            <Progress 
+                              value={Math.max(0, Math.min(100, skill.level))} 
+                              className="h-2" 
+                            />
                           </div>
                         </CardContent>
                       </Card>
