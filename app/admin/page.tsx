@@ -4,13 +4,13 @@ import { useState } from 'react';
 import { ProjectForm } from '@/components/project-form';
 import { ProjectsList } from '@/components/projects-list';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { getProjects } from '@/lib/projects';
+import { getProjects, ProjectData } from '@/lib/projects';
 import { Button } from '@/components/ui/button';
 import { PlusCircle } from 'lucide-react';
 
 export default function AdminPage() {
   const [projects, setProjects] = useState(getProjects());
-  const [editingProject, setEditingProject] = useState(null);
+  const [editingProject, setEditingProject] = useState<ProjectData | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   
   return (
@@ -53,7 +53,7 @@ export default function AdminPage() {
           ) : (
             <ProjectsList 
               projects={projects} 
-              onEdit={setEditingProject} 
+              onEdit={(project) => setEditingProject(project)} 
               onDelete={(id) => {
                 // Would integrate with API in real implementation
                 setProjects(projects.filter(p => p.id !== id));
